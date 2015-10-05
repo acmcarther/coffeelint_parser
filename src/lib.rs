@@ -53,7 +53,7 @@ pub fn identify_lint_errors(lint_content: String) -> Vec<FileErrors> {
         let mut contents = line.splitn(2, ":").map(|string| string.to_owned()).collect::<Vec<String>>();
         let line_num = contents.remove(0).replace("#", "");
         let error = contents.remove(0);
-        last_file.errors.push(LintError {line: line_num.parse::<u32>().expect("Line number was not parsable to number"), error_text: error });
+        last_file.errors.push(LintError {line: line_num.parse::<u32>().unwrap(), error_text: error });
       } else {
         // New File
         acc.push(FileErrors {file_name: line, errors: vec![]});
