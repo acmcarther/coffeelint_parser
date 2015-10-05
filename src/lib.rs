@@ -8,19 +8,19 @@ use rustc_serialize::{
 pub struct CoffeelintResponse {
   // type: String
   // time: GitTM
-  message: String
+  pub message: String
 }
 
 #[derive(RustcDecodable, Clone, Debug)]
 pub struct LintError {
-  line: u32,
-  error_text: String
+  pub line: u32,
+  pub error_text: String
 }
 
 #[derive(Clone, Debug)]
 pub struct FileErrors {
-  file_name: String,
-  errors: Vec<LintError>
+  pub file_name: String,
+  pub errors: Vec<LintError>
 }
 
 pub fn identify_lint_errors(lint_content: String) -> Vec<FileErrors> {
